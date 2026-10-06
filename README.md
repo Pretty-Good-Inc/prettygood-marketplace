@@ -14,8 +14,8 @@ PrettyGood's private plugin marketplace for Claude (claude.ai chat, Cowork and C
 **Claude Code:**
 
 ```bash
-claude plugin marketplace add <github-org>/prettygood-claude-plugins
-claude plugin install bonafide@prettygood-plugins
+claude plugin marketplace add Pretty-Good-Inc/prettygood-marketplace
+claude plugin install bonafide@prettygood-marketplace
 ```
 
 For a private repository, this uses the Git credentials already on the machine.
