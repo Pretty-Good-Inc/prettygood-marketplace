@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "bonafide": {
+      "type": "http",
+      "url": "https://mcp.withbonafide.com/mcp"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "bonafide",
+  "version": "0.1.0",
+  "description": "Operate wineries on the Bonafide (PrettyGood) platform: orders, customers, wine club, shipments and imports",
+  "author": {
+    "name": "PrettyGood"
+  },
+  "homepage": "https://withbonafide.com",
+  "keywords": ["wine", "winery", "dtc", "fulfillment", "wine-club", "bonafide", "prettygood"]
+}

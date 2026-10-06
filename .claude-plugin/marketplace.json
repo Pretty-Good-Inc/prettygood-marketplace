@@ -1,0 +1,14 @@
+{
+  "name": "prettygood-plugins",
+  "description": "PrettyGood plugins for Claude: wine platform operations and fulfillment integrations",
+  "owner": {
+    "name": "PrettyGood"
+  },
+  "plugins": [
+    {
+      "name": "bonafide",
+      "source": "./plugins/bonafide",
+      "description": "Operate wineries on the Bonafide (PrettyGood) platform: orders, customers, wine club, shipments and imports"
+    }
+  ]
+}
