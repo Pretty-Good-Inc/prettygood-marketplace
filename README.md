@@ -1,6 +1,6 @@
 # PrettyGood plugins for Claude
 
-PrettyGood's private plugin marketplace for Claude (claude.ai chat, Cowork and Claude Code).
+PrettyGood's public plugin marketplace for Claude (claude.ai chat, Cowork and Claude Code), open to every Bonafide customer. The plugins connect to PrettyGood's MCP servers, and each person signs in with their own Bonafide or WineDirect account, so the repository itself holds no secrets.
 
 | Plugin | What it does | Status |
 |---|---|---|
@@ -9,16 +9,39 @@ PrettyGood's private plugin marketplace for Claude (claude.ai chat, Cowork and C
 
 ## Install
 
-**claude.ai (Team or Enterprise):** an Owner adds this repository under **Organization settings → Plugins & skills → Add → Sync from GitHub**, then sets each plugin's availability. Members find the plugins under **Customize → Plugins**. Organization sync reads the default branch through the Claude GitHub App, so members don't need access to this repository.
-
 **Claude Code:**
 
 ```bash
 claude plugin marketplace add Pretty-Good-Inc/prettygood-marketplace
 claude plugin install bonafide@prettygood-marketplace
+claude plugin install winedirect@prettygood-marketplace
 ```
 
-For a private repository, this uses the Git credentials already on the machine.
+**claude.ai (Team or Enterprise):** organization sync only syncs a marketplace repository that is private or internal, so it can't sync this public repository directly. Instead, an Owner in the customer's organization:
+
+1. Creates a private repository on github.com (for example `your-org/claude-plugins`) with a `.claude-plugin/marketplace.json` that points at the plugins here:
+
+   ```json
+   {
+     "name": "your-org-plugins",
+     "owner": { "name": "Your winery" },
+     "plugins": [
+       {
+         "name": "bonafide",
+         "source": { "source": "git-subdir", "url": "https://github.com/Pretty-Good-Inc/prettygood-marketplace.git", "path": "plugins/bonafide" }
+       },
+       {
+         "name": "winedirect",
+         "source": { "source": "git-subdir", "url": "https://github.com/Pretty-Good-Inc/prettygood-marketplace.git", "path": "plugins/winedirect" }
+       }
+     ]
+   }
+   ```
+
+   Organization sync fetches these public plugin sources without credentials.
+2. Adds that repository under **Organization settings → Plugins & skills → Add → Sync from GitHub**, then sets each plugin's availability.
+
+Members then find the plugins under **Customize → Plugins**. Add `"ref"` or `"sha"` to a source to pin a version instead of following `main`.
 
 ## Repository layout
 
@@ -37,12 +60,12 @@ MCP server source code doesn't live here. Each server has its own repository and
 
 1. Change a plugin and bump `version` in its `plugin.json`.
 2. Run `claude plugin validate . && bash scripts/check-plugins.sh` locally. CI runs both on every PR.
-3. Merge to `main`. Organization sync releases on pushes to the default branch and ignores tags, so **every merge to `main` is a release**.
+3. Merge to `main`. Claude Code users get it on their next marketplace update, and customers' claude.ai marketplaces that don't pin a `ref` or `sha` pick it up the next time they sync, so **treat every merge to `main` as a release**.
 
-## Rules organization sync enforces
+## Rules to keep
 
-- This repository must stay **private or internal** on github.com.
-- Plugin sources are relative paths starting with `./` (or `github`, `url`, `git-subdir` sources).
+- This repository stays **public**: customers' organization sync fetches its plugin folders without credentials, and Claude Code users add it directly. Never commit secrets or customer data.
+- Plugin sources are relative paths starting with `./`, so the same folders work both here and as `git-subdir` sources in customers' marketplaces.
 - No top-level `bin/` directory inside a plugin; put executables in `scripts/`.
 - Local (stdio) MCP servers don't run in claude.ai chat. Use remote (HTTP) servers.
 
