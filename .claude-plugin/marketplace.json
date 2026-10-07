@@ -9,6 +9,11 @@
       "name": "bonafide",
       "source": "./plugins/bonafide",
       "description": "Operate wineries on the Bonafide (PrettyGood) platform: orders, customers, wine club, shipments and imports"
+    },
+    {
+      "name": "winedirect",
+      "source": "./plugins/winedirect",
+      "description": "Work with the WineDirect Fulfillment (WD-FS) 3PL: orders, shipments and tracking, inventory, products, transfers and invoices"
     }
   ]
 }

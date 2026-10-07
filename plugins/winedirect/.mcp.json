@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "winedirect": {
+      "type": "http",
+      "url": "https://winedirect-mcp.withbonafide.com/mcp"
+    }
+  }
+}
