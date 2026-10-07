@@ -5,7 +5,7 @@ PrettyGood's private plugin marketplace for Claude (claude.ai chat, Cowork and C
 | Plugin | What it does | Status |
 |---|---|---|
 | [`bonafide`](plugins/bonafide) | Operate wineries on the Bonafide (PrettyGood) platform through its MCP server | Pilot |
-| `winedirect` | WineDirect Fulfillment (WD-FS) orders, shipments, inventory and transfers through the PrettyGood WineDirect MCP server | Planned |
+| [`winedirect`](plugins/winedirect) | WineDirect Fulfillment (WD-FS) orders, shipments, inventory and transfers through the PrettyGood WineDirect MCP server | Pilot |
 
 ## Install
 

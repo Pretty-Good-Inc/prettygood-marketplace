@@ -1,0 +1,10 @@
+{
+  "name": "winedirect",
+  "version": "0.1.0",
+  "description": "Work with the WineDirect Fulfillment (WD-FS) 3PL: orders, shipments and tracking, inventory, products, transfers and invoices",
+  "author": {
+    "name": "PrettyGood"
+  },
+  "homepage": "https://github.com/Pretty-Good-Inc/winedirect-mcp",
+  "keywords": ["wine", "winedirect", "wd-fs", "fulfillment", "3pl", "shipping", "inventory", "prettygood"]
+}
