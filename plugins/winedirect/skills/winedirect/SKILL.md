@@ -32,7 +32,8 @@ If no `wd_*` tools are available, the WineDirect connector isn't connected or is
 
 3. **Read with summaries and paging.**
    - List tools return compact summary rows by default. Use the matching `wd_get_*` tool (`wd_get_order`, `wd_get_shipment`, `wd_get_product`, `wd_get_transfer`) for one record's full detail. Pass `view: "full"` only when you need many complete objects at once.
-   - List results come back as `{totalItems, offset, returned, nextOffset, items, note}`. While `nextOffset` isn't null there is more: call the same tool with the **same filters** and `offset: nextOffset`. Page through everything for counts, reconciliation and exports. For "show me" questions, one page is fine, but say it's partial ("first 100 of 282").
+   - List results come back as `{totalItems, offset, returned, nextOffset, columns, items, note}`. In summary view each item is a row of values in `columns` order (`null` means no value). Read rows by column name, and present them to the user as a table or list, not as raw arrays.
+   - While `nextOffset` isn't null there is more: call the same tool with the **same filters** and `offset: nextOffset`. Page through everything for counts, reconciliation and exports. For "show me" questions, one page is fine, but say it's partial ("first 100 of 282").
    - Narrow with filters (dates, status, warehouse, SKU, order type) before paging through large sets.
 
 4. **Writes: describe, confirm, then call.** See [Changing data](#changing-data).
